@@ -1,0 +1,99 @@
+# OmniFoundry 預設配置檔
+
+# 硬體設定
+hardware:
+  # 是否自動偵測硬體
+  auto_detect: true
+  
+  # 強制使用 CPU（即使有 GPU 也不使用）
+  force_cpu: false
+  
+  # GPU 記憶體使用比例（0.0-1.0）
+  gpu_memory_fraction: 0.9
+  
+  # 指定使用的 GPU ID（留空則自動選擇）
+  gpu_ids: []
+
+# 模型設定
+models:
+  # 模型緩存目錄
+  cache_dir: "./models"
+  
+  # 是否自動下載缺失的模型
+  auto_download: true
+  
+  # Hugging Face Hub 鏡像（可選）
+  hf_mirror: ""
+  
+  # 預設量化類型（auto, none, int8, int4, gptq, awq, gguf）
+  quantization: "auto"
+
+# 推論設定
+inference:
+  # 最大生成長度
+  max_length: 2048
+  
+  # 溫度參數（0.0-2.0）
+  temperature: 0.7
+  
+  # Top-p 取樣
+  top_p: 0.9
+  
+  # Top-k 取樣
+  top_k: 50
+  
+  # 重複懲罰
+  repetition_penalty: 1.0
+  
+  # Batch size
+  batch_size: 1
+  
+  # 使用 Flash Attention（如果可用）
+  use_flash_attention: true
+
+# API 服務設定
+api:
+  # 伺服器主機
+  host: "0.0.0.0"
+  
+  # 伺服器埠號
+  port: 8000
+  
+  # 是否啟用 CORS
+  enable_cors: true
+  
+  # 允許的來源（CORS）
+  cors_origins:
+    - "*"
+  
+  # API 金鑰（留空則不啟用驗證）
+  api_key: ""
+  
+  # 請求速率限制（每分鐘請求數，0 表示無限制）
+  rate_limit: 60
+
+# 日誌設定
+logging:
+  # 日誌等級（DEBUG, INFO, WARNING, ERROR, CRITICAL）
+  level: "INFO"
+  
+  # 日誌檔案路徑（留空則僅輸出到終端）
+  file: ""
+  
+  # 日誌格式
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# 進階設定
+advanced:
+  # 使用混合精度（fp16）
+  use_fp16: true
+  
+  # 使用 bfloat16
+  use_bf16: false
+  
+  # 使用 CPU offload（模型部分卸載到 CPU）
+  cpu_offload: false
+  
+  # 編譯模式（none, default, reduce-overhead, max-autotune）
+  compile_mode: "none"
+

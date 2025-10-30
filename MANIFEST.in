@@ -1,0 +1,8 @@
+# 包含額外檔案到套件中
+
+include README.md
+include LICENSE
+include requirements.txt
+recursive-include configs *.yaml
+recursive-include examples *.py
+

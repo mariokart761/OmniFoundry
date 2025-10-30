@@ -1,0 +1,30 @@
+# 核心依賴
+torch>=2.0.0
+transformers>=4.30.0
+accelerate>=0.20.0
+huggingface-hub>=0.16.0
+
+# API 服務
+fastapi>=0.100.0
+uvicorn[standard]>=0.23.0
+pydantic>=2.0.0
+
+# CLI 工具
+click>=8.1.0
+
+# 配置管理
+pyyaml>=6.0
+
+# 硬體偵測
+psutil>=5.9.0
+gputil>=1.4.0
+py-cpuinfo>=9.0.0
+
+# 圖像生成 (可選)
+diffusers>=0.18.0
+pillow>=10.0.0
+
+# 工具庫
+requests>=2.31.0
+tqdm>=4.65.0
+
