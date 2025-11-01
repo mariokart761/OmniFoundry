@@ -33,28 +33,45 @@ def example_model_management():
 # 範例 3: 執行推論
 def example_inference():
     """推論範例"""
-    from omnifoundry.core.inference import InferenceEngine
+    from omnifoundry.core.inference import TransformersEngine
     
-    # 初始化推論引擎
-    engine = InferenceEngine(
-        model_id="meta-llama/Llama-2-7b-hf",
-        backend="auto"
+    # 初始化推論引擎（使用 GPT-2 做測試）
+    engine = TransformersEngine(
+        model_id="gpt2",
+        device="cpu",  # 或 "cuda" 如果有 GPU
+        dtype="float32",
     )
     
     # 載入模型
+    print("載入模型...")
     engine.load_model()
     
     # 執行推論
     result = engine.infer(
-        "Hello, how are you?",
-        max_length=100,
+        "Once upon a time",
+        max_new_tokens=50,
         temperature=0.7
     )
     
     print("推論結果:", result)
     
+    # 串流推論
+    print("\n串流推論:")
+    print("Assistant: ", end="", flush=True)
+    for token in engine.stream("The future of AI is", max_new_tokens=30):
+        print(token, end="", flush=True)
+    print()
+    
+    # 批次推論
+    prompts = ["Hello", "World", "AI"]
+    results = engine.infer(prompts, max_new_tokens=10)
+    print("\n批次推論結果:")
+    for prompt, result in zip(prompts, results):
+        print(f"  {prompt} -> {result}")
+    
     # 卸載模型
     engine.unload_model()
+    print("\n模型已卸載")
 
 
 # 範例 4: 使用配置檔
@@ -80,8 +97,17 @@ if __name__ == "__main__":
     print("=" * 50)
     
     # 執行範例
+    print("\n選擇要執行的範例:")
+    print("1. 硬體偵測")
+    print("2. 模型管理（尚未實作）")
+    print("3. 推論引擎")
+    print("4. 配置管理（尚未實作）")
+    
+    # 取消註解以執行範例
     # example_hardware_detection()
     # example_model_management()
     # example_inference()
     # example_config()
+    
+    print("\n請取消註解上方的函數呼叫以執行範例")
 
